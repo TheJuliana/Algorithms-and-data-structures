@@ -1,3 +1,0 @@
-C:/Users/Juliana/CLionProjects/asd_lab_1/cmake-build-debug/CMakeFiles/asd_lab_1.dir
-C:/Users/Juliana/CLionProjects/asd_lab_1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Juliana/CLionProjects/asd_lab_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
