@@ -27,24 +27,21 @@ int main() {
     for (auto i: input) {
         int pos;
         pos = open.find(i);
-        //для отладки
-        //std::cout << "Pos open = " << pos << std::endl;
 
         //Если скобка открывающаяся -> на вершину стека
-        if (pos > 0) {
+        if (pos >= 0) {
             brackets.push(i);
         }
         pos = close.find(i);
-        //для отладки
-        //std::cout << "Pos close = " << pos << std::endl;
 
         //Если скобка закрывающаяся:
-        if (pos > 0) {
+        if (pos >= 0) {
             //если стек пуст -> выражение неверное
             if (brackets.empty()) { err = true; }
             else {
                 //иначе если соответствует открывающейся -> снимаем ее со стека
                 c = brackets.top();
+                brackets.pop();
                 //если не соответствует -> выражение неверное
                 if (pos != open.find(c)) {
                     err = true;;
