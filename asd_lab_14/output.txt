@@ -1,6 +1,10 @@
-Key: 0 Word:fourtNext elem: 0xbf1b40
-Key: 1 Word:Next elem: 0x6fcf97a0
-Key: 2 Word:firstKey: 3 Word:Next elem: 0x6fcf97a0
-Key: 4 Word:Next elem: 0x6fcf97a0
-Key: 5 Word:secKey: 6 Word:secondKey: 7 Word:fithKey: 8 Word:Next elem: 0x6fcf97a0
-Key: 9 Word:third
+Key: 0 Data by reference:  sixth
+Key: 1 Empty data
+Key: 2 Data by reference:  first
+Key: 3 Empty data
+Key: 4 Empty data
+Key: 5 Data by reference:  sec
+Key: 6 Data by reference:  second
+Key: 7 Data by reference:  fith
+Key: 8 Empty data
+Key: 9 Data by reference:  third

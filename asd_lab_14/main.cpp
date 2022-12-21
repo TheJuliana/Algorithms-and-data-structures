@@ -28,16 +28,14 @@ struct HashElem {
 void PrintTable(std::vector<HashElem>& table) {
 
     for (auto i : table) {
-        HashElem* x = i.next;
-        std::cout << "Key: " << i.key << " Word:" << i.data;
+        std::cout << "Key: " << i.key; //вывод ключа ячейки
 
-        //!!!!!!!!!!!
+        if (i.next != nullptr && i.next->data != "") {
+            std::cout << " Data by reference:  " << i.next->data; //вывод значения, хранящегося по ссылке
+        } else {
+            std::cout << " Empty data";
+        }
 
-        /* if (i.data != "" && x != nullptr && x->data!= "") {
-            std::cout << " Next elem: " << x << x->data;
-
-            // std::cout << " Next elem: " << x->data;
-        }*/
         std::cout << std::endl;
     }
 
@@ -64,14 +62,14 @@ void CreateTable(std::vector<HashElem>& table) {  //хэш-таблица
 
     while (input >> a) { //считываем слова
         int k = CreateKey(a); //генерируем для них ключ с помощью хэш-функции
+        auto *c = new HashElem(false, k, a, nullptr);
         if (table[k].data == "") { //если есть место - заполняем ячейку в таблице словом
-            table[k] = HashElem(false, k, a, nullptr);
+            table[k].next = c;
         } else if ((table[k].data != a) && (table[k].data != "")) { //если ячейка уже занята - коллизия -> используем метод цепочек
-            auto *b = new HashElem(false, k, a);
             while (table[k].next != nullptr) {
                 table[k] = table[k].next;
             }
-            table[k].next = b; // добавляем ссылку на следующее значение
+            table[k].next = c; // добавляем ссылку на следующее значение
 
         } else if (table[k].data == a) {
             std::cout << "!Dublicate " << "'"<< a << "'" << std::endl;
@@ -82,10 +80,15 @@ void CreateTable(std::vector<HashElem>& table) {  //хэш-таблица
     input.close();
     output.open("../output.txt");
     for (auto i : table) {
-        output << "Key: " << i.key << " Word:" << i.data;
-        if (i.next) {
-            output << "Next elem: " << i.next << "\n";
+        output << "Key: " << i.key; //вывод ключа ячейки
+
+        if (i.next != nullptr && i.next->data != "") {
+            output << " Data by reference:  " << i.next->data; //вывод значения, хранящегося по ссылке
+        } else {
+            output << " Empty data";
         }
+
+        output << "\n";
     }
 }
 
