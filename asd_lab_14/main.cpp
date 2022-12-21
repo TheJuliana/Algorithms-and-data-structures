@@ -63,13 +63,13 @@ void CreateTable(std::vector<HashElem>& table) {  //хэш-таблица
     while (input >> a) { //считываем слова
         int k = CreateKey(a); //генерируем для них ключ с помощью хэш-функции
         auto *c = new HashElem(false, k, a, nullptr);
-        if (table[k].data == "") { //если есть место - заполняем ячейку в таблице словом
+        if (table[k].data == "") { //если есть место - заполняем ячейку в таблице ссылкой на слово
             table[k].next = c;
         } else if ((table[k].data != a) && (table[k].data != "")) { //если ячейка уже занята - коллизия -> используем метод цепочек
             while (table[k].next != nullptr) {
                 table[k] = table[k].next;
             }
-            table[k].next = c; // добавляем ссылку на следующее значение
+            table[k].next = c; // добавляем ссылку на следующее значение в уже имеющиеся в этой ячейке
 
         } else if (table[k].data == a) {
             std::cout << "!Dublicate " << "'"<< a << "'" << std::endl;
