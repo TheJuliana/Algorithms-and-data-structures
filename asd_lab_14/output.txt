@@ -1,0 +1,6 @@
+Key: 0 Word:fourtNext elem: 0xbf1b40
+Key: 1 Word:Next elem: 0x6fcf97a0
+Key: 2 Word:firstKey: 3 Word:Next elem: 0x6fcf97a0
+Key: 4 Word:Next elem: 0x6fcf97a0
+Key: 5 Word:secKey: 6 Word:secondKey: 7 Word:fithKey: 8 Word:Next elem: 0x6fcf97a0
+Key: 9 Word:third
