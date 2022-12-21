@@ -8,16 +8,28 @@
 #include <cmath>
 #include <vector>
 
-void bubbleSort(std::vector<int>& mas)
-{
-    for (int i = 0; i < mas.size() - 1; i++) {
-        for (int j = 0; j < mas.size() - i - 1; j++) {
-            if (mas[j] > mas[j + 1]) {
-                std::swap(mas[j], mas[j + 1]);
-            }
-        }
+int Medium(int a, int b, std::vector<int> & set) {
+    return ((rand()*rand())%(b-a+1))+a; //32767*32767=1 073 676 289 - необходимое максимально возможное число, так как max n = 1 000 000
+};
+
+void QuickSort(int a, int b, std::vector<int> & set) {
+    if (a>=b) {return;}
+    int m = Medium(a, b, set);
+    int k = set[m];
+    int l = a-1;
+    int r = b+1;
+    while(true) {
+        do {l++;} while (set[l]<k) ;
+        do {r--;} while (set[r]>k) ;
+        if (l>=r) {break;}
+        std::swap(set[l], set[r]);
     }
-}
+    r = l;
+    l = l-1;
+    QuickSort(a, l, set);
+    QuickSort(r, b, set);
+
+};
 
 void getNumbers(std::vector<int>& numbers) {
     int num; //входное число
@@ -52,7 +64,7 @@ void getNumbers(std::vector<int>& numbers) {
         }
     }
 
-    bubbleSort(numbers); //сортируем итоговый массив для наглядности
+    QuickSort(0, numbers.size()-1, numbers); //сортируем итоговый массив для наглядности
 };
 
 void printMas(std::vector<int>& mas) { //функция для вывода массива в консоль
