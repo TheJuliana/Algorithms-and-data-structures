@@ -36,6 +36,7 @@ int CreateKey(std::string& a) { //хэш функция
 }
 void CreateTable(std::vector<HashElem>& table) {  //хэш-таблица
     std::ifstream input; //входной файл
+    std::ofstream output; //выходной файл
     std::string a; // слова
     for (int i = 0; i < N; i++) { // создаем пустую таблицу размером N
         table.emplace_back(HashElem(false,i,""));
@@ -64,6 +65,11 @@ void CreateTable(std::vector<HashElem>& table) {  //хэш-таблица
         }
     }
 
+    input.close();
+    output.open("../output.txt");
+    for (auto i : table) {
+        output << "Key: " << i.key << " Word:" << i.data << "\n";
+    }
 }
 
 
